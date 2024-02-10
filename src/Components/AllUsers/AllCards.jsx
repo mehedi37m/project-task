@@ -1,27 +1,28 @@
+import { Link } from "react-router-dom";
 
+const AllCards = ({ user }) => {
+  console.log(user);
 
-const AllCards = ({user}) => {
-
-    console.log(user)
-
-    const {image,firstName,lastName,email,company,address} = user;
-    return (
-        <div>
-
-            <div>
-                <img src={image} alt="" />
-                <h1>{firstName}</h1>
-                <h1>{lastName}</h1>
-                <h1>{email}</h1>
-                <h1>{address.address}</h1>
-                <h1>{company.name}</h1>
-            </div>
-
-
-
-            
+  const { id, image, firstName, lastName, email, company, address } = user;
+  return (
+    <div>
+      <Link to={`/users/${id}`}>
+        <div className="card w-80 bg-base-100 shadow-xl">
+          <figure className="px-10 pt-10">
+            <img src={image} alt="avatar" className="rounded-xl w-24" />
+          </figure>
+          <div className="card-body items-center text-center">
+            <h2 className="card-title">
+              {firstName} {lastName}
+            </h2>
+            <p>{email}</p>
+            <p>{address?.address}</p>
+            <p>{company.name}</p>
+          </div>
         </div>
-    );
+      </Link>
+    </div>
+  );
 };
 
 export default AllCards;
